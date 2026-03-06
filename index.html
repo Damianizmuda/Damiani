@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Futures Bot Desktop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+    <main class="layout">
+      <section class="card config-card">
+        <div class="badge">⚡ PAPER TRADING</div>
+        <h1>Futures Bot</h1>
+        <p class="muted">Konfiguruj parametry tradingu</p>
+
+        <label>Para</label>
+        <select id="pair">
+          <option>SOL/USDT</option>
+          <option>BTC/USDT</option>
+          <option>ETH/USDT</option>
+        </select>
+
+        <div class="row-between">
+          <label>Balans</label>
+          <strong id="balanceValue">$10.00</strong>
+        </div>
+        <input id="balance" type="range" min="1" max="100" step="1" value="10" />
+
+        <div class="row-between">
+          <label>Dźwignia</label>
+          <strong id="leverageValue">30x</strong>
+        </div>
+        <input id="leverage" type="range" min="5" max="60" step="1" value="30" />
+
+        <div class="grid-2">
+          <div>
+            <label>Take Profit ($)</label>
+            <input id="tp" type="number" step="0.01" min="0.01" value="0.50" />
+          </div>
+          <div>
+            <label>Stop Loss ($)</label>
+            <input id="sl" type="number" step="0.01" min="0.01" value="0.25" />
+          </div>
+        </div>
+
+        <div class="notional">Notional Value <span id="notional">$300.00</span></div>
+
+        <button id="startBtn">🚀 Start Trading</button>
+        <p class="meta" id="saveStatus">Tryb web: ustawienia nie są zapisywane.</p>
+        <p class="meta" id="appVersion"></p>
+      </section>
+
+      <section class="card dashboard-card" id="dashboard" hidden>
+        <div class="dashboard-head">
+          <h2 id="dashPair">SOL/USDT</h2>
+          <span class="pill red">SHORT</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><span>Cena live</span><strong id="livePrice">$84.42</strong></div>
+          <div class="stat"><span>Balans</span><strong id="dashBalance">$10.00</strong></div>
+          <div class="stat"><span>PNL</span><strong id="pnl">+0.000$</strong></div>
+          <div class="stat"><span>Win Rate</span><strong>0%</strong></div>
+        </div>
+
+        <div class="chart" id="chart"></div>
+
+        <div class="stat-grid">
+          <div class="stat"><span>Entry</span><strong id="entry">$84.42</strong></div>
+          <div class="stat"><span>TP / SL</span><strong id="dashTpSl">0.50 / 0.25</strong></div>
+          <div class="stat"><span>Dźwignia</span><strong id="dashLev">30x</strong></div>
+          <div class="stat"><span>Status</span><strong class="green">Aktywny</strong></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
